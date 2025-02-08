@@ -34,8 +34,8 @@ public class Lab2351 {
         y = scnr.nextDouble();
         z = scnr.nextDouble() ;
 
-        double x2ndPower = Math. pow(x, z);
-        double xPowerY2PowerZ = Math. pow(x, Math.pow(y, z));
+        double x2ndPower = Math.pow(x, z);
+        double xPowerY2PowerZ = Math.pow(x, Math.pow(y, z));
         double absValueY = Math.abs(y) ;
         double sqrRootXY2Z = Math.sqrt(Math. pow(x*y, z));
 
