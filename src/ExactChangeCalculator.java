@@ -25,29 +25,29 @@ public class ExactChangeCalculator {
     static final int PENNY_POS = 3;
 
     // Method to calculate exact change
-    public static void exactChange(int totalChange, int[] coinsUsed) {
+    public static void exactChange(int userTotal, int[] coinsUsed) {
 
         for (int i = 0; i < 4; i++) {
 
             // Below line is an int so there are no fractions
             if (i == QUARTER_POS){
-                coinsUsed[i] = totalChange / 25;
+                coinsUsed[i] = userTotal / 25;
                 // now get the remainder, if any
-                totalChange = totalChange % 25;
+                userTotal = userTotal % 25;
             }
             if (i == DIME_POS){
-                coinsUsed[i] = totalChange / 10;
+                coinsUsed[i] = userTotal / 10;
                 // now get the remainder, if any
-                totalChange = totalChange % 10;
+                userTotal = userTotal % 10;
             }
             if (i == NICKLE_POS){
-                coinsUsed[i] = totalChange / 5;
+                coinsUsed[i] = userTotal / 5;
                 // now get the remainder, if any
-                totalChange = totalChange % 5;
+                userTotal = userTotal % 5;
             }
 
             if (i == PENNY_POS){
-                coinsUsed[i] = totalChange / 1;
+                coinsUsed[i] = userTotal / 1;
             }
 
         }
@@ -55,26 +55,30 @@ public class ExactChangeCalculator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter total change in cents: ex. 57 for 57 cents");
+        System.out.println("Enter total change in cents:");
 
-        int totalChange = scanner.nextInt();
+        int userTotal = scanner.nextInt();
 
-        int[] coinsUsed = new int[4]; // Indexes: 0=quarters, 1=dimes, 2=nickels, 3=pennies
-        exactChange(totalChange, coinsUsed);
+        int[] coinsVals = new int[4]; // Indexes: 0=quarters, 1=dimes, 2=nickels, 3=pennies
+        exactChange(userTotal, coinsVals);
 
-        if (totalChange <= 0) {
+        if (userTotal <= 0) {
             System.out.println("No change");
             return;
         }
 
-        // System.out.println(Arrays.toString(coinsUsed));
-        for (int i = 0; i < coinsUsed.length; i++) {
-            if (coinsUsed[i] > 0) {
+        // System.out.println(Arrays.toString(coinsVals));
+        for (int coinPosition = 0; coinPosition < coinsVals.length; coinPosition++) {
 
-                System.out.print(coinsUsed[i] + " : ");
-                boolean plural = coinsUsed[i] > 1;
+            // If we have coins of this denomination
+            if (coinsVals[coinPosition] > 0) {
 
-                switch (i){
+                System.out.print(coinsVals[coinPosition] + " ");
+
+                // Use the plural version of the string
+                boolean plural = coinsVals[coinPosition] > 1;
+
+                switch (coinPosition){
                     case QUARTER_POS:
                         if (plural) {
                             System.out.println("Quarters");
