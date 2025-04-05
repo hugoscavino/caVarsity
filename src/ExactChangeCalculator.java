@@ -33,23 +33,21 @@ public class ExactChangeCalculator {
             if (i == QUARTER_POS){
                 coinsUsed[i] = totalChange / 25;
                 // now get the remainder, if any
-                totalChange %= 25;
+                totalChange = totalChange % 25;
             }
             if (i == DIME_POS){
                 coinsUsed[i] = totalChange / 10;
                 // now get the remainder, if any
-                totalChange %= 10;
+                totalChange = totalChange % 10;
             }
             if (i == NICKLE_POS){
                 coinsUsed[i] = totalChange / 5;
                 // now get the remainder, if any
-                totalChange %= 5;
+                totalChange = totalChange % 5;
             }
 
             if (i == PENNY_POS){
                 coinsUsed[i] = totalChange / 1;
-                // now get the remainder, if any
-                totalChange %= 1;
             }
 
         }
